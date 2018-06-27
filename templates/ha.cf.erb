@@ -1,0 +1,22 @@
+#
+# heartbeat config file
+#
+# Logging -------------------------------
+debugfile /var/log/ha-debug
+logfile /var/log/ha-log
+#
+
+# Reaction time and failback ------------
+keepalive 2
+deadtime 30
+warntime 10
+initdead 300
+auto_failback <%= autofailback %>
+
+# network & system settings ------------
+#bcast  eth0
+ucast <%= @interface %> <%= @ucastdest %>
+watchdog /dev/watchdog
+
+node <%= mastername %>
+node <%= slavename %>
